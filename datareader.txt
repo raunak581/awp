@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace databinding
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        SqlDataSource ds = new SqlDataSource();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            ds.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\shiva.mdf;Integrated Security=True;Connect Timeout=30";
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            ds.InsertParameters.Add("p1", System.Data.DbType.Int32, TextBox1.Text);
+            ds.InsertParameters.Add("p2", System.Data.DbType.String, TextBox2.Text);
+            ds.InsertParameters.Add("p3", System.Data.DbType.Int32, TextBox3.Text);
+            ds.InsertCommand = "insert into Table2 values(@p1,@p2,@p3);";
+            ds.Insert();
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\DELL\\Documents\\shiva.mdf;Integrated Security=True;Connect Timeout=30");
+            conn.Open();
+            SqlCommand cmd= new SqlCommand("select * from Table2", conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            GridView1.DataBind();
+            conn.Close();
+
+        }
+    }
+}
