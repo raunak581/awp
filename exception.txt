@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication6
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int num = int.Parse(TextBox1.Text);
+                int result = num / 0;
+                Label1.Text = $"The result is {result}.";
+            }
+            catch (DivideByZeroException ex)
+            {
+                Label1.Text = ex.Message;
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int[] arr = { 1, 2, 3 };
+                int index = int.Parse(TextBox2.Text);
+                int value = arr[index];
+                Label2.Text = $"The value at index {index} is {value}.";
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Label2.Text = ex.Message;
+            }
+        }
+    }
+
+}
