@@ -1,0 +1,18 @@
+static void Main(string[] args)
+{
+    string firstname;
+    string lastname;
+    firstname = "B.N.B";
+    lastname = "College";
+    firstname += lastname;
+    System.Console.WriteLine(firstname);
+    System.Console.WriteLine(firstname.Substring(2, 1)); System.Console.WriteLine(lastname.Replace("College", "College of Science"));
+    string columns;
+    columns = "C1\tC2\tC3";
+    System.Console.WriteLine(columns);
+    string rows = "R1\r\nR2\r\nR3";
+    System.Console.WriteLine(rows);
+    string text; text = @"To demonstrate ""string operations""";
+    System.Console.WriteLine(text);
+    Console.ReadKey();
+}

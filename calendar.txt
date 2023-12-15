@@ -1,0 +1,27 @@
+ protected void Page_Load(object sender, EventArgs e)
+ {
+     Calendar1.SelectedDayStyle.BackColor = System.Drawing.Color.Red;
+     
+ }
+
+ protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+ {
+     if (e.Day.Date.Year==2023 && e.Day.Date.Month==12 && e.Day.Date.Day==15)
+     {
+         Label l1 = new Label();
+         l1.Text = "teja cha bday";
+         e.Cell.Controls.Add(l1);
+
+     }
+     if (e.Day.Date.Year == 2023 && e.Day.Date.Month == 12 && e.Day.Date.Day == 25)
+     {
+         Label l2 = new Label();
+         l2.Text = "christmas";
+         Image img = new Image();
+         img.Width = 50;
+         img.Height = 50;
+         img.ImageUrl = "Elon.jpg";
+         e.Cell.Controls.Add(l2);
+         e.Cell.Controls.Add(img);
+     }
+ }
